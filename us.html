@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>United States Visa Info</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background-color: #f0f0f0;
+      margin: 0;
+    }
+    .top-bar {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+    }
+    .back-button {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background-color: #4f46e5;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+    .back-button:hover {
+      background-color: #3730a3;
+    }
+    h1 {
+      text-align: center;
+      color: #222;
+      margin-top: 0;
+    }
+    p {
+      text-align: center;
+      color: #555;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card h3 {
+      margin-top: 0;
+      color: #4f46e5;
+    }
+    .card p {
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <a href="index.html" class="back-button">← Back to Home</a>
+  </div>
+
+  <h1>United States Visa Appointment Info</h1>
+  <p>Select a visa type below to learn more about the requirements and schedule your appointment.</p>
+
+  <div class="cards">
+    <div class="card">
+      <h3>F1 / F2 Visas</h3>
+      <p>F1: For students enrolled in academic programs at U.S. institutions.<br>
+         F2: For dependents (spouse or children) of F1 visa holders.</p>
+      <button style="margin-top: 1rem; padding: 0.5rem 1rem; background-color: #4f46e5; color: white; border: none; border-radius: 6px; cursor: pointer;">Book Now</button>
+    </div>
+    <div class="card">
+      <h3>B1 / B2 Visas</h3>
+      <p>B1: For business-related visits, including conferences or meetings.<br>
+         B2: For tourism, visiting family, or medical treatment.</p>
+      <button style="margin-top: 1rem; padding: 0.5rem 1rem; background-color: #4f46e5; color: white; border: none; border-radius: 6px; cursor: pointer;">Book Now</button>
+    </div>
+    <div class="card">
+      <h3>H1B / H4 Visas</h3>
+      <p>H1B: For professionals in specialty occupations.<br>
+         H4: For dependents (spouse or children) of H1B holders.</p>
+      <button style="margin-top: 1rem; padding: 0.5rem 1rem; background-color: #4f46e5; color: white; border: none; border-radius: 6px; cursor: pointer;">Book Now</button>
+    </div>
+    <div class="card">
+      <h3>Other Visas</h3>
+      <p>L1: For intra-company transferees working in the U.S.<br>
+         J1: For individuals in educational and cultural exchange programs.</p>
+      <button style="margin-top: 1rem; padding: 0.5rem 1rem; background-color: #4f46e5; color: white; border: none; border-radius: 6px; cursor: pointer;">Book Now</button>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visa Slot Booking - Global</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background-color: #ffffff;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+    }
+    .hero {
+      background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 6rem 2rem;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.3);
+      z-index: 0;
+    }
+    .hero h1,
+    .hero p {
+      position: relative;
+      z-index: 1;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+    .search-container {
+      text-align: center;
+      margin: 2rem auto 0;
+    }
+    .search-container input {
+      padding: 0.75rem;
+      font-size: 1rem;
+      width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    .search-container input:focus {
+      outline: none;
+      border-color: #4f46e5;
+      box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.4);
+    }
+    .social-buttons {
+      display: inline-flex;
+      margin-left: 1rem;
+      vertical-align: middle;
+    }
+    .social-buttons a {
+      margin-left: 0.5rem;
+      width: 40px;
+      height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      border-radius: 50%;
+      transition: transform 0.3s;
+    }
+    .social-buttons a img {
+      width: 32px;
+      height: 32px;
+    }
+    .social-buttons a:hover {
+      transform: scale(1.1);
+    }
+    .country-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+    .country-box {
+      background-size: cover;
+      background-position: center;
+      border-radius: 12px;
+      height: 280px;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background-blend-mode: multiply;
+      background-color: rgba(0,0,0,0.4);
+      cursor: pointer;
+    }
+    .country-box:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+    .country-info {
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 8px;
+      padding: 0.5rem 0.8rem;
+      color: #111;
+      font-family: 'Poppins', sans-serif;
+      position: relative;
+      width: 100%;
+      box-sizing: border-box;
+      transition: background-color 0.3s;
+    }
+    .country-info h3 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+    .country-box:nth-child(1) { background-image: url('https://images.unsplash.com/photo-1549921296-3a6b98d2bd0c'); }
+    .country-box:nth-child(2) { background-image: url('https://images.unsplash.com/photo-1582550945154-66ea8f43f06e'); }
+    .country-box:nth-child(3) { background-image: url('https://images.unsplash.com/photo-1587502536263-3be0eebd6a1b'); }
+    .country-box:nth-child(4) { background-image: url('https://images.unsplash.com/photo-1570732541413-829e4f7f0a2d'); }
+    .country-box:nth-child(5) { background-image: url('https://images.unsplash.com/photo-1583241991701-9c76a1b8c9cb'); }
+    .country-box:nth-child(6) { background-image: url('https://images.unsplash.com/photo-1594562026228-bf6e7c4108c4'); }
+    .country-box:nth-child(7) { background-image: url('https://images.unsplash.com/photo-1543965170-4c01a3f9ba1d'); }
+    .country-box:nth-child(8) { background-image: url('https://images.unsplash.com/photo-1601202902039-5e899076d6dd'); }
+    .country-box:nth-child(9) { background-image: url('https://images.unsplash.com/photo-1549887534-53c1d3f86183'); }
+  </style>
+  <script>
+    function filterCountries() {
+      const input = document.getElementById('countrySearch').value.toLowerCase();
+      const boxes = document.querySelectorAll('.country-box');
+      boxes.forEach(box => {
+        const name = box.innerText.toLowerCase();
+        box.style.display = name.includes(input) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <div><strong>VisaSlotly</strong></div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#how">How it Works</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Book Your Visa Appointment by Country</h1>
+    <p>Select a country below to get started with your visa application and slot booking.</p>
+  </section>
+
+  <div class="search-container">
+    <input type="text" id="countrySearch" onkeyup="filterCountries()" placeholder="Search for a country..." />
+    <div class="social-buttons">
+      <a href="https://wa.me/" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+      </a>
+      <a href="https://instagram.com" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+      </a>
+    </div>
+  </div>
+
+  <section class="country-grid">
+    <a href="us.html" class="country-box"><div class="country-info"><h3>United States</h3></div></a>
+    <a href="uk.html" class="country-box"><div class="country-info"><h3>United Kingdom</h3></div></a>
+    <a href="canada.html" class="country-box"><div class="country-info"><h3>Canada</h3></div></a>
+    <a href="dubai.html" class="country-box"><div class="country-info"><h3>Dubai</h3></div></a>
+    <a href="india.html" class="country-box"><div class="country-info"><h3>India</h3></div></a>
+    <a href="kuwait.html" class="country-box"><div class="country-info"><h3>Kuwait</h3></div></a>
+    <a href="singapore.html" class="country-box"><div class="country-info"><h3>Singapore</h3></div></a>
+    <a href="malaysia.html" class="country-box"><div class="country-info"><h3>Malaysia</h3></div></a>
+    <a href="thailand.html" class="country-box"><div class="country-info"><h3>Thailand</h3></div></a>
+  </section>
+
+  <footer>
+    &copy; 2025 VisaSlotly. All rights reserved.
+  </footer>
+</body>
+</html>
